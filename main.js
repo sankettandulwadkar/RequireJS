@@ -1,21 +1,15 @@
 
-window.onload = function(){
+function translate(){
 
-if (document.getElementById('language').value == "en"){
-	var translated_string = i18n.translate( "Hello World").onDomain("messages-en").fetch(); // alerts "some value"
+	var chosen_language = document.getElementById('language').value;
+	var translated_string = i18n.translate( "Hello World").onDomain("messages-"+chosen_language).fetch(); // alerts "some value"
 	console.log(translated_string)
-	// var divContent = document.getElementById("text-container").innerHTML;
-	// divContent = translated_string;
+	document.getElementById("text-container").innerHTML = translated_string;
+	
 }
 
-else if (document.getElementById('language').value == "fr"){
-	var translated_string = i18n.translate( "Hello World").onDomain("messages-fr").fetch(); // alerts "some value"
-	var divContent = document.getElementById("text-container").innerHTML;
-	divContent = translated_string;
-}
-
-else {
-	console.log("Deutsch");
-}
-
-};
+$("document").ready(function(){
+	$("#btn-translate").click(function(){
+		translate();
+	})
+});
